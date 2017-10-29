@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  m2shipmentchannel:
+    image: m2shipmentchannel:0.1
+    build:
+      context: ./M2ShipmentChannel
+
