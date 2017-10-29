@@ -95,6 +95,7 @@ namespace M2ShipmentChannel
                 {
                     Console.WriteLine($"----- {exc.Message} &&&&& !!!!");
                     error = true;
+                    Thread.Sleep(10000);
                 }
             } while (error);
 
