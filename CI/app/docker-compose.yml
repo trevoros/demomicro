@@ -2,7 +2,7 @@ version: '3'
 
 services:
   mgy-easypost:
-    image: mgy-easypost:${BUILD_NUMBER-latest}
+    image: my-registry:55000/mgy-easypost:${BUILD_NUMBER-latest}
     build:
       context: ../../epost
     volumes:
@@ -28,7 +28,7 @@ services:
       - rabbitmq
   
   m2shipmentchannel:
-    image: m2shipmentchannel:${BUILD_NUMBER-latest}
+    image: my-registry:55000/m2shipmentchannel:${BUILD_NUMBER-latest}
     build:
       context: ../../M2ShipmentChannel/M2ShipmentChannel
     links:
