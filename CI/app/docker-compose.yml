@@ -1,0 +1,58 @@
+version: '3'
+
+services:
+  mgy-easypost:
+    image: mgy-easypost:${BUILD_NUMBER-latest}
+    build:
+      context: ../../epost
+    volumes:
+      - ../../epost:/app
+      - /app/node_modules/
+
+    # Expose ports [HOST:CONTAINER}
+    ports:
+      - "4040:4040"
+
+    # Set environment variables from this file
+    env_file:
+      - ../../epost/.env
+      
+
+    # Overwrite any env var defined in .env file (if required)
+    environment:
+      - MONGO_HOST=mongodb://mongo/easypostdock
+      - DEBUG=express-mongoose-es6-rest-api:*
+
+    links:
+      - mongo
+      - rabbitmq
+  
+  m2shipmentchannel:
+    image: m2shipmentchannel:${BUILD_NUMBER-latest}
+    build:
+      context: ../../M2ShipmentChannel/M2ShipmentChannel
+    links:
+      - rabbitmq
+      
+  mongo:
+    image: "mongo"
+    volumes: 
+      - mongo_data:/data/db
+
+    ports:
+      - "27017:27017"
+
+  rabbitmq:
+    image: rabbitmq:3-management
+
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+
+volumes:
+  mongo_data:
+  
+networks:
+  default:
+    external:
+      name: magento2dockercompose_www

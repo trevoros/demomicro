@@ -90,7 +90,8 @@ namespace M2ShipmentChannel
             }
             catch (Exception exc)
             {
-                Console.WriteLine($"&&&& {exc.Message} &&&&&");
+                Console.WriteLine($"&&&& {exc.Message} &&&&& !!!!");
+                Thread.Sleep(Timeout.Infinite);
             }
           
         }
