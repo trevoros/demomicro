@@ -49,7 +49,7 @@ const createMessage = (body, shipment) => {
     order_id: body.orderId,
     qty: body.qty,
     description: track.description,
-    title: "bad title",//track.title,
+    title: track.title,
     carrier_code: shipment.selected_rate.carrier,
     track_number: shipment.tracking_code 
   }));
