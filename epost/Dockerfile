@@ -22,4 +22,4 @@ EXPOSE 4040
 
 # cmd to start service
 
-CMD ["nodemon", "/app/dist/index.js"]
+CMD ["nodemon", "/app/index.js"]
