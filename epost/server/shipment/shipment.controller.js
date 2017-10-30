@@ -3,7 +3,7 @@ import Account from '../account/account.model';
 import ApiError from '../helpers/APIError';
 import postMessage from '../helpers/communication';
 
-const createShipment = async (req, res, next) => { return res.json({a:2});
+const createShipment = async (req, res, next) => {
   const logisticoId = req.body.logisticoAccountId;
   try {
     const account = await Account.findByLogisticoId(logisticoId);
@@ -49,7 +49,7 @@ const createMessage = (body, shipment) => {
     order_id: body.orderId,
     qty: body.qty,
     description: track.description,
-    title: "bad titleaaa",//track.title,
+    title: track.title,
     carrier_code: shipment.selected_rate.carrier,
     track_number: shipment.tracking_code 
   }));
