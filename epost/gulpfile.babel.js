@@ -40,14 +40,17 @@ gulp.task('babel', () =>
 );
 
 // Start server with restart on file changes
-gulp.task('nodemon', ['copy', 'babel'], () =>
+gulp.task('nodemon', ['copy', 'babel'], () =>{
+ console.log('&&&&&&&&');
+ console.log(path.join('dist', 'index.js'))
+ return
   plugins.nodemon({
     script: path.join('dist', 'index.js'),
     ext: 'js',
     ignore: ['node_modules/**/*.js', 'dist/**/*.js'],
     tasks: ['copy', 'babel']
   })
-);
+});
 
 // gulp serve for development
 gulp.task('serve', ['clean'], () => runSequence('nodemon'));
