@@ -17,6 +17,8 @@ RUN yarn --pure-lockfile
 # copy all file from current dir to /app in container
 COPY . /app/
 
+RUN ls -alR
+
 # expose port 4040
 EXPOSE 4040
 
